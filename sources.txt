@@ -1,0 +1,2 @@
+https://hackernoon.com/using-postgres-effectively-in-spring-boot-applications
+https://www.bezkoder.com/spring-boot-postgresql-example/
