@@ -1,0 +1,110 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentCoherencyReport.id">
+    <h4>Coherency Report</h4>
+    <div>
+      <label><strong>SerZone:</strong></label> {{ currentCoherencyReport.serZone }}
+    </div>
+    <div>
+      <label><strong>Type:</strong></label> {{ currentCoherencyReport.type }}
+    </div>
+    <div>
+      <label><strong>Tag:</strong></label> {{ currentCoherencyReport.tag }}
+    </div>
+    <div>
+      <label><strong>Description:</strong></label>
+      {{ currentCoherencyReport.description }}
+    </div>
+    <div>
+      <label><strong>Comment:</strong></label>
+      {{ currentCoherencyReport.comment }}
+    </div>
+
+    <a
+      class="badge badge-warning"
+      routerLink="/coherency-reports/{{ currentCoherencyReport.id }}"
+    >
+      Edit
+    </a>
+  </div>
+
+  <div *ngIf="!currentCoherencyReport">
+    <br />
+    <p>Please click on a coherency Report...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentCoherencyReport.id" class="edit-form">
+    <h4>Coherency Report</h4>
+    <form>
+      <div class="form-group">
+        <label for="serZone">SerZone</label>
+        <input
+          type="text"
+          class="form-control"
+          id="serZone"
+          [(ngModel)]="currentCoherencyReport.serZone"
+          name="serZone"
+        />
+      </div>
+      <div class="form-group">
+        <label for="type">Type</label>
+        <input
+          type="type"
+          class="form-control"
+          id="type"
+          [(ngModel)]="currentCoherencyReport.type"
+          name="type"
+        />
+      </div>
+      <div class="form-group">
+        <label for="tag">Tag</label>
+        <input
+          type="text"
+          class="form-control"
+          id="tag"
+          [(ngModel)]="currentCoherencyReport.tag"
+          name="tag"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          [(ngModel)]="currentCoherencyReport.description"
+          name="description"
+        />
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment</label>
+        <input
+          type="text"
+          class="form-control"
+          id="comment"
+          [(ngModel)]="currentCoherencyReport.comment"
+          name="comment"
+        />
+      </div>
+    </form>
+
+    <button class="badge badge-danger mr-2" (click)="deleteCoherencyReport()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateCoherencyReport()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentCoherencyReport.id">
+    <br />
+    <p>Cannot access this Coherency Report...</p>
+  </div>
+</ng-template>
